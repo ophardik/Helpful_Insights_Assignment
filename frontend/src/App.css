@@ -1,0 +1,38 @@
+@REM .App {
+@REM   text-align: center;
+@REM }
+
+@REM .App-logo {
+@REM   height: 40vmin;
+@REM   pointer-events: none;
+@REM }
+
+@REM @media (prefers-reduced-motion: no-preference) {
+@REM   .App-logo {
+@REM     animation: App-logo-spin infinite 20s linear;
+@REM   }
+@REM }
+
+@REM .App-header {
+@REM   background-color: #282c34;
+@REM   min-height: 100vh;
+@REM   display: flex;
+@REM   flex-direction: column;
+@REM   align-items: center;
+@REM   justify-content: center;
+@REM   font-size: calc(10px + 2vmin);
+@REM   color: white;
+@REM }
+
+@REM .App-link {
+@REM   color: #61dafb;
+@REM }
+
+@REM @keyframes App-logo-spin {
+@REM   from {
+@REM     transform: rotate(0deg);
+@REM   }
+@REM   to {
+@REM     transform: rotate(360deg);
+@REM   }
+@REM }
