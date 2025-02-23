@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {useEffect, useState,useCallback  } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
@@ -17,22 +17,23 @@ const Home = () => {
     const BASE_URL = process.env.REACT_APP_BACKEND_URL || "https://helpful-insights-assignment-4.onrender.com";
     const candidatesPerPage = 4;
 
-    const fetchCandidates = async () => {
+    const fetchCandidates = useCallback(async () => {
         setLoading(true);
         try {
             const response = await axios.get(`${BASE_URL}/api/allCandidate`);
-            setCandidates(response.data.structured);
+            console.log("API Response:", response.data); // Debugging step
+            setCandidates(response.data.structured || []); // Ensure it's an array
         } catch (error) {
+            console.error("Error fetching candidates:", error);
             toast.error("Failed to fetch candidates.");
         } finally {
             setLoading(false);
         }
-    };
-    
+    }, []); // ✅ Empty array ensures it's created only once
 
     useEffect(() => {
         fetchCandidates();
-    });
+    }, [fetchCandidates]); 
 
     // Delete candidate
     const deleteCandidate = async (id) => {
