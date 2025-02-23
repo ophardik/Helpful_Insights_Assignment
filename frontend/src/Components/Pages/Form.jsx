@@ -10,7 +10,7 @@ const Form = () => {
     const [phone, setPhone] = useState("");
     const [position, setPosition] = useState("");
     const navigate = useNavigate();
-    const BASE_URL = process.env.REACT_APP_BACKEND_URL || "https://helpful-insights-assignment-1.onrender.com";
+    const BASE_URL = process.env.REACT_APP_BACKEND_URL || "https://helpful-insights-assignment-4.onrender.com";
 
     const newCandidate = async (e) => {
         e.preventDefault();

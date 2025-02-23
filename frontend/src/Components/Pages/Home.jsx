@@ -12,13 +12,9 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
     const [editMode, setEditMode] = useState(false);
     const [editCandidate, setEditCandidate] = useState({ name: "", email: "", phone: "", position: "", id: "" });
-    const BASE_URL = process.env.REACT_APP_BACKEND_URL || "https://helpful-insights-assignment-1.onrender.com";
+    const BASE_URL = process.env.REACT_APP_BACKEND_URL || "https://helpful-insights-assignment-4.onrender.com";
 
     const candidatesPerPage = 4;
-    useEffect(() => {
-        fetchCandidates(); 
-    }, []);
-    // Fetch candidates
     const fetchCandidates = async () => {
         try {
             const response = await axios.get(`${BASE_URL}/api/allCandidate`);
@@ -30,6 +26,11 @@ const Home = () => {
             setLoading(false);
         }
     };
+    
+    useEffect(() => {
+        fetchCandidates();
+    }, []); // ✅ No
+      
     if (loading) {
         return (
             <div className="d-flex vh-100 justify-content-center align-items-center">
