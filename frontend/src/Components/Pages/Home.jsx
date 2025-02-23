@@ -12,15 +12,16 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
     const [editMode, setEditMode] = useState(false);
     const [editCandidate, setEditCandidate] = useState({ name: "", email: "", phone: "", position: "", id: "" });
+    const BASE_URL = process.env.REACT_APP_BACKEND_URL || "https://helpful-insights-assignment-1.onrender.com";
 
     const candidatesPerPage = 4;
     useEffect(() => {
-        fetchCandidates();
+        fetchCandidates(); 
     }, []);
     // Fetch candidates
     const fetchCandidates = async () => {
         try {
-            const response = await axios.get("/api/allCandidate");
+            const response = await axios.get(`${BASE_URL}/api/allCandidate`);
             setCandidates(response.data.structured);
         } catch (error) {
             console.error("Error fetching candidates", error);
@@ -43,7 +44,7 @@ const Home = () => {
     // Delete candidate
     const deleteCandidate = async (id) => {
         try {
-            await axios.delete(`/api/deleteCandidate/${id}`);
+            await axios.delete(`${BASE_URL}/api/deleteCandidate/${id}`);
             toast.success("Candidate deleted successfully!");
             fetchCandidates(); // Refresh list
         } catch (error) {
@@ -68,7 +69,7 @@ const Home = () => {
     const updateCandidate = async () => {
         try {
             const { id, name, email, phone, position } = editCandidate;
-            await axios.patch("/api/updateDetails", { id, name, email, phone, position });
+            await axios.patch(`${BASE_URL}/api/updateDetails`, { id, name, email, phone, position });
 
             toast.success("Candidate updated successfully!");
             fetchCandidates(); // Refresh list

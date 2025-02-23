@@ -10,6 +10,7 @@ const Form = () => {
     const [phone, setPhone] = useState("");
     const [position, setPosition] = useState("");
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_BACKEND_URL || "https://helpful-insights-assignment-1.onrender.com";
 
     const newCandidate = async (e) => {
         e.preventDefault();
@@ -22,7 +23,7 @@ const Form = () => {
             }
 
             // API call
-            const response = await axios.post("/api/addCandidate", {
+            const response = await axios.post(`${BASE_URL}/api/addCandidate`, {
                 name,
                 email,
                 phone,
