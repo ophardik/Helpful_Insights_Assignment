@@ -29,7 +29,7 @@ const Home = () => {
         } finally {
             setLoading(false);
         }
-    }, []); // ✅ Empty array ensures it's created only once
+    }, [BASE_URL]); // ✅ Empty array ensures it's created only once
 
     useEffect(() => {
         fetchCandidates();
