@@ -32,7 +32,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchCandidates();
-    }, []);
+    });
 
     // Delete candidate
     const deleteCandidate = async (id) => {
